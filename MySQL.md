@@ -33,8 +33,26 @@ You can't change the name of databases. You have to dump and reload the data int
 4. A more complicated command. You could choose to put the password in if it's a secured server. The file name will  be the data of today. Name multiple databases you want to backup.  
 
     ```
-    mysqldump.exe --user=root --password  --host=localhost --port=3306 --result-file="backup.%date:~10,4%%date:~4,2%%date:~7,2%.%time:~0,2%%time:~3,2%.sql" --default-character-set=utf8 --single-transaction=TRUE --databases "backup_test"
+    mysqldump.exe --user=root --password='pwd'  --host=localhost --port=3306 --result-file="backup.%date:~10,4%%date:~4,2%%date:~7,2%.%time:~0,2%%time:~3,2%.sql" --default-character-set=utf8 --single-transaction=TRUE "mydatabase"
     ```
+    `--databases "db1" "db2"`  
     `--all-databases`  
     
-5. 34
+5. Make this a routine task using Windows Task Scheduler
+
+### Encrypt the password for mysqldump
+1. Find cnf location by typing `mysql --help` in cmd
+
+    ```
+    Default options are read from the following files in the given order:
+    C:\Windows\my.ini C:\Windows\my.cnf C:\my.ini C:\my.cnf C:\Program Files\MySQL\M
+    ySQL Server 5.7\my.ini C:\Program Files\MySQL\MySQL Server 5.7\my.cnf
+    ```
+2. Create the my.cnf file in one of these locations and put in your password as
+
+    ```
+    [mysqldump]
+    password='pwd'
+    ```
+3. Now you should be able to log in without -p parameter
+    
