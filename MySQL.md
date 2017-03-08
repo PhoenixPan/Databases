@@ -52,6 +52,7 @@ You can't change the name of databases. You have to dump and reload the data int
 
     ```
     [mysqldump]
+    user=username
     password='pwd'
     ```
 3. Now you should be able to log in without -p parameter
