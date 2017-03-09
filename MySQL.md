@@ -33,7 +33,7 @@ You can't change the name of databases. You have to dump and reload the data int
 4. A more complicated command. You could choose to put the password in if it's a secured server. The file name will  be the data of today. Name multiple databases you want to backup.  
 
     ```
-    mysqldump.exe --user=root --password='pwd'  --host=localhost --port=3306 --result-file="backup.%date:~10,4%%date:~4,2%%date:~7,2%.%time:~0,2%%time:~3,2%.sql" --default-character-set=utf8 --single-transaction=TRUE "mydatabase"
+    mysqldump.exe --user=root --password='pwd'  --host=localhost --port=3306 --result-file=C:\User\pan\backup.%date:~10,4%%date:~4,2%%date:~7,2%.%time:~0,2%%time:~3,2%.sql" --default-character-set=utf8 --single-transaction=TRUE "mydatabase"
     ```
     `--databases "db1" "db2"`  
     `--all-databases`  
