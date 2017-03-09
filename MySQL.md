@@ -65,7 +65,7 @@ To complete the backup process, we need some lines of code with batch to help us
     set path=C:\Program Files\MySQL\MySQL Server 5.7\bin
 
     :: Where the sqldump files are and where the zipped sql files should go
-    set DUMPDIR=M:\sqldump
+    set DUMPDIR=M:\sqldumps
     set ZIPDIR=M:\sqlzips
 
     :: Export all databases to the dump folder
