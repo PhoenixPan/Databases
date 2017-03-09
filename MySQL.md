@@ -57,3 +57,28 @@ You can't change the name of databases. You have to dump and reload the data int
     ```
 3. Now you should be able to log in without -p parameter
     
+### Complete batch code
+To complete the backup process, we need some lines of code with batch to help us zip and relocate the .sql files.  
+
+    ```
+    :: Set path for mysqldump if not specified
+    set path=C:\Program Files\MySQL\MySQL Server 5.7\bin
+
+    :: Where the sqldump files are and where the zipped sql files should go
+    set DUMPDIR=M:\sqldump
+    set ZIPDIR=M:\sqlzips
+
+    :: Export all databases to the dump folder
+    mysqldump.exe --user=root --password=1538  --host=localhost --port=3306 --result-file=%DUMPDIR%\backup.%date:~10,4%%date:~4,2%%date:~7,2%.%time:~0,2%%time:~3,2%.sql --default-character-set=utf8 --single-transaction=TRUE --all-databases
+
+    :: Find the most recent dump file
+    FOR /F "delims=" %%I IN ('DIR "%DUMPDIR%\*.sql" /B /O:D') DO SET NewestFile=%%I
+    echo %NewestFile%
+
+    :: Set path for 7z if not specified
+    set path=C:\Program Files\7-Zip
+
+    :: Truncate the file name and zip it up
+    set ZipName=%NewestFile:~0,-4%
+    7z a %ZIPDIR%\%ZipName%.7z %DUMPDIR%\%NewestFile%
+    ```
