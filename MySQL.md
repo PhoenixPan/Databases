@@ -69,7 +69,9 @@ To complete the backup process, we need some lines of code with batch to help us
     set ZIPDIR=M:\sqlzips
 
     :: Export all databases to the dump folder
-    mysqldump.exe --user=root --password=1538  --host=localhost --port=3306 --result-file=%DUMPDIR%\backup.%date:~10,4%%date:~4,2%%date:~7,2%.%time:~0,2%%time:~3,2%.sql --default-character-set=utf8 --single-transaction=TRUE --all-databases
+    mysqldump.exe --user=root --password=1538  --host=localhost --port=3306 
+    --result-file=%DUMPDIR%\backup.%date:~10,4%%date:~4,2%%date:~7,2%.%time:~0,2%%time:~3,2%.sql 
+    --default-character-set=utf8 --single-transaction=TRUE --all-databases
 
     :: Find the most recent dump file
     FOR /F "delims=" %%I IN ('DIR "%DUMPDIR%\*.sql" /B /O:D') DO SET NewestFile=%%I
