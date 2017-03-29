@@ -2,4 +2,4 @@
 
 ## Quick pickup
 
-**Don't use primary key outside the technical scope, such as for employee IDs (What if your boss wants an ID of 8888?).**
+**Don't use primary key for non-technical purpose, such as using it as employee ID (What if your boss wants an ID of 8888?).**
