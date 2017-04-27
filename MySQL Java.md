@@ -43,3 +43,10 @@ public class MySQLInsertion {
 ```
 
 
+
+## Errors
+### WARN: Establishing SSL connection without server's identity verification is not recommended.
+Add "?autoReconnect=true&useSSL=false"  
+```
+jdbc:mysql://localhost/table?autoReconnect=true&useSSL=false
+```
