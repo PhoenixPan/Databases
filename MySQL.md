@@ -1,5 +1,6 @@
 # MySQL
 
+1. Use double/single quotes for values, strings, etc and backticks for column/table
 
 ## Basic commands
 `SHOW DATABASES;`  
